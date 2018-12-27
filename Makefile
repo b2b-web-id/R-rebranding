@@ -1,14 +1,13 @@
-all: update build
+all: update patch build
 
 init:
 	git submodule init
 
 update:
-	git submodule update
+	git submodule update --remote
+
+patch:
+	bash patch.sh
 
 build:
-	cd R
-	./configure --without-recommended-packages --with-R-shlib --prefix=$HOME/R/R-rebranding
-	make
-	make install
-	cd ..
+	bash build.sh
