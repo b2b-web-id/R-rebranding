@@ -1,10 +1,14 @@
-all: sync build
+all: update build
 
-sync:
-	git clone http://github.com/b2b-web-id/R
+init:
+	git submodule init
+
+update:
+	git submodule update
 
 build:
 	cd R
-	./configure
+	./configure --without-recommended-packages --with-R-shlib --prefix=$HOME/R/R-rebranding
 	make
+	make install
 	cd ..
