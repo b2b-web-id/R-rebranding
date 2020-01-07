@@ -1,7 +1,7 @@
 all: update patch build
 
 init:
-	rm -rf R
+	rm -rf R/*
 	git submodule init
 
 update:
