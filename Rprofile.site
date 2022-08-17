@@ -11,9 +11,9 @@
 # set a site library
 # .Library.site <- file.path(chartr("\\", "/", R.home()), "site-library")
 
-# set a CRAN mirror to BPPT (ID)
+# set a CRAN mirror to Automatic redirection to servers worldwide
 local({r <- getOption("repos")
-      r["CRAN"] <- "https://repo.bppt.go.id/cran/"
+      r["CRAN"] <- "https://cloud.r-project.org/"
       options(repos=r)})
 
 # Give a fortune cookie, but only to interactive sessions
@@ -26,6 +26,6 @@ quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"),
                    commandArgs()),
              na.rm=TRUE)
 if(!quiet) {
-  cat("An enhaced distribution of R\n")
+  cat("An distribution of R\n")
   cat("By B2B.Web.ID\n\n")
 }

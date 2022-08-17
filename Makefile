@@ -1,14 +1,18 @@
-all: update patch build
+all: update patch config build
 
 init:
 	rm -rf R/*
 	git submodule init
 
 update:
-	git submodule update --remote
+	git submodule update --init --remote --force --depth=1
 
 patch:
-	bash patch.sh
+	cp Rprofile.site R/src/gnuwin32/fixed/etc/Rprofile.site
+	cp Rprofile.site R/etc/Rprofile.site
+
+config:
+	cd R && ./configure --without-recommended-packages --with-R-shlib --prefix=/opt/b2b-web-id/R
 
 build:
-	bash build.sh
+	make && sudo make install
